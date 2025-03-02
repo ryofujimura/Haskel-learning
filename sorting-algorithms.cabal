@@ -1,0 +1,13 @@
+
+cabal-version:      2.4
+name:               sorting-algorithms
+version:            0.1.0.0
+author:             Ryo Fujimura
+build-type:         Simple
+
+executable sorting-algorithms
+  main-is:          Main.hs
+  other-modules:    QuickSort, MergeSort
+  build-depends:    base ^>=4.16.0.0
+  hs-source-dirs:   .
+  default-language: Haskell2010
