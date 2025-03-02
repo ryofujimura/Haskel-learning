@@ -1,4 +1,3 @@
-
 -- Main.hs
 --
 -- CECS 342 Assignment 1
