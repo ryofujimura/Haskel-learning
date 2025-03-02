@@ -1,0 +1,24 @@
+Downloading the latest package list from hackage.haskell.org
+Package list of hackage.haskell.org is up to date.
+The index-state is set to 2025-03-02T17:12:33Z.
+Resolving dependencies...
+Build profile: -w ghc-9.6.5 -O1
+In order, the following will be built (use -v for more details):
+ - new-project-0.1.0.0 (exe:new-project) (configuration changed)
+Configuring executable 'new-project' for new-project-0.1.0.0..
+Preprocessing executable 'new-project' for new-project-0.1.0.0..
+Building executable 'new-project' for new-project-0.1.0.0..
+CECS 342 Assignment 1
+Name: Ryo Fujimura
+Student ID: 16317260
+Language: Haskell
+Quick sort test 1 passed, certificate: 00000000.
+Quick sort test 2 passed, certificate: 25297390.
+Quick sort test 3 passed, certificate: 16885552.
+Quick sort test 4 passed, certificate: 06534318.
+Quick sort test 5 passed, certificate: 01149575.
+Merge sort test 1 passed, certificate: 00000000.
+Merge sort test 2 passed, certificate: 25297390.
+Merge sort test 3 passed, certificate: 16885552.
+Merge sort test 4 passed, certificate: 06534318.
+Merge sort test 5 passed, certificate: 01149575.
