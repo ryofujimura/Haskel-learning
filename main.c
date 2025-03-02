@@ -6,15 +6,15 @@
 // C Test Program
 
 
-#include "quick_sort.h" // TODO: Create the files quick_sort.h and .c
-#include "merge_sort.h" // TODO: Create the files merge_sort.h and .c
+#include "quick_sort.h" 
+#include "merge_sort.h" 
 
 #include <stdlib.h>
 #include <stdio.h>
 
 
-char *name = "First Last"; // TODO: Update your full name.
-int studentID = 12345678;  // TODO: Update your student ID.
+char *name = "Ryo Fujimura"; 
+int studentID = 016317260;  
 
 
 static

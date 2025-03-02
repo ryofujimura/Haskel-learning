@@ -8,13 +8,13 @@
 
 module Main where
 
-import QuickSort(qsort)  -- TODO: Create the file QuickSort.hs
-import MergeSort(msort)  -- TODO: Create the file MergeSort.hs
+import QuickSort(qsort)  
+import MergeSort(msort)  
 import Text.Printf(printf)
 
 
-name      = "First Last" -- TODO: Update your full name
-studentID = 12345678     -- TODO: Update your student ID
+name      = "Ryo Fujimura" 
+studentID = 016317260     
 
 
 main :: IO ()
