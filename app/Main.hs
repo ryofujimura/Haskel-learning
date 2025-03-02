@@ -1,77 +1,69 @@
--- BasicLanguageConstructs.hs
+-- Main.hs
 --
--- CECS 342
--- Haskell vs C
+-- CECS 342 Assignment 1
+-- Sorting Algorithms in C & Haskell
 --
--- Basic Language Constructs
+-- Haskell Test Program
 
 
-module BasicLanguageConstructs where
+module Main where
 
--- Variables
-seven = 7
-
-
-sq123 = let x = 123 in x * x
-
-sq321 = x * x where x = 321
+import QuickSort(qsort)  -- TODO: Create the file QuickSort.hs
+import MergeSort(msort)  -- TODO: Create the file MergeSort.hs
+import Text.Printf(printf)
 
 
--- Functions
-twice1 n = 2 * n
-
-twice2 = \n -> 2 * n  -- lambda-expression
-
-twice3 = (2*)         -- section
-
-average1 :: Float -> Float -> Float
-average1 a b = (a+b)/2
-average2 a = \b -> (a+b)/2
-average3 = \a -> \b -> (a+b)/2
-average4 = \a b -> (a+b)/2
-
-h = average1 2
-
-average5 :: (Float, Float) -> Float
-average5(a, b) = (a+b)/2
-
--- Conditionals
-signum1 n = if      n < 0 then -1
-            else if n > 0 then  1
-            else                0
-
--- Piece-wise functions with guards
-signum2 n | n < 0     = -1
-          | n > 0     =  1
-          | otherwise =  0
+name      = "First Last" -- TODO: Update your full name
+studentID = 12345678     -- TODO: Update your student ID
 
 
--- Recursion
+main :: IO ()
+main = do
+  putStr "CECS 342 Assignment 1\n"
+  printf "Name: %s\n" name
+  printf "Student ID: %d\n" studentID
+  putStrLn "Language: Haskell"
+  
+  let qs = "Quick sort"
+  logTest qs 1 qsort     0
+  logTest qs 2 qsort     1
+  logTest qs 3 qsort     2
+  logTest qs 4 qsort  1013
+  logTest qs 5 qsort (10^5)
 
--- Factorial with if-then-else
-factorial1 n = if n==0 then 1 else n * (factorial1 (n-1))
+  let ms = "Merge sort"
+  logTest ms 1 msort     0
+  logTest ms 2 msort     1
+  logTest ms 3 msort     2
+  logTest ms 4 msort  1013
+  logTest ms 5 msort (10^5)
 
--- Factorial with pattern matching
-factorial2 0 = 1
-factorial2 n = n * (factorial2 (n-1))
-
--- Factorial with accumulating parameter
-factorial3 n = fact_acc n 1
+  
+-- Log a test.
+logTest :: String -> Int -> ([Int] -> [Int]) -> Int -> IO()
+logTest tname i sort n = printf "%s test %d %s, certificate: %08d.\n" tname i result cert
   where
-    fact_acc 0 f = f
-    fact_acc n f = fact_acc (n-1) (n * f)
-
--- Factorial with a list of a range of numbers
-factorial4 n = product [1..n]
+    result   = if ok then "passed" else "failed"
+    (ok, cert) = test sort n studentID
 
 
--- Naive fibonacci numbers
-fib1 0 = 0
-fib1 1 = 1
-fib1 n = fib1 (n-2) + fib1 (n-1)
-
--- Fibonacci numbers with two accumulating parameters
-fib2 n = fib_acc n 0 1
+-- Test a sort function.
+test sort n seed = (ok, cert)
   where
-    fib_acc 0 a _ = a
-    fib_acc n a b = fib_acc (n-1) b (a+b)
+    ok       = isSorted sorted
+      && length sorted == length unsorted
+    cert     = checkSum (10^8) sorted
+    sorted   = sort unsorted
+    unsorted = take n $ pseudoRandoms 8 seed
+
+
+pseudoRandoms k seed = tail $ iterate next seed
+  where
+    next 0 = seed
+    next r = (r*r `div` 10^(k`div`2)) `mod` 10^k
+
+
+checkSum m = snd . foldl (\(i, s) x -> (i+1, (s + i*x) `mod` m)) (1, 0)
+
+
+isSorted xs = and $ zipWith (<=) xs (tail xs)
