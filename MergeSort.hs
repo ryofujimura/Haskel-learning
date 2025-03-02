@@ -1,3 +1,4 @@
+
 -- VSCode, Replit, Canvas, In-Notes, Hoogle
 module MergeSort where
 
